@@ -9,7 +9,7 @@ function App() {
   const [search, setSearch] = useState('')
  
   useEffect(() => {
-    axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+    axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=10&page=1&sparkline=false')
     .then(res => {
       setCoins(res.data);
 
@@ -25,21 +25,19 @@ function App() {
     )
 
   return (
-    <div className="App container mx-auto w-8/12">
-      <div className="text-center p-24">
-        <h1 className="text-4xl text-gray-800 font-bold">Cryptocurrency Price Tracker</h1>
-        <form>
-          <input type="text" placeholder="Search all assets..." className="mt-16 w-96 bg-gray-200  placeholder-gray-500 px-6 py-3 focus:outline-none focus:ring rounded-xl" onChange={handleChange}/>
+    <div className="bg-indigo-700 App">
+      <div className="pt-6 pb-10 bg-indigo-700">
+        <h1 className="text-3xl font-semibold text-center text-white">Cryptocurrency Price Tracker</h1>
+        <form className="mx-4 mt-6">
+          <input type="text" placeholder="Search all assets..." className="w-full px-3 py-3 placeholder-gray-500 bg-white rounded-full" onChange={handleChange}/>
         </form>
       </div>
-      <div className=" bg-white text-gray-800 px-6 py-4 font-semibold rounded-xl shadow grid grid-cols-7 gap-2">
-        <div className="col-span-3">
-          <h1>Name</h1>
-        </div>
-        <h2>Price</h2>
-        <p>Volume</p>
-        <p>Change</p>
-        <p>Market Cap</p>
+      <div className="grid grid-cols-4 px-4 py-2 font-semibold bg-white rounded-t-2xl">
+        <h3 className="col-span-2">Name</h3>
+        <h3>Price</h3>
+        <h3 className="hidden">Volume</h3>
+        <h3>Change</h3>
+        <h3 className="hidden">Market Cap</h3>
       </div>
     {filteredCoins.map(coin => {
       return (
