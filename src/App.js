@@ -40,7 +40,7 @@ function App() {
         <h3 className="hidden lg:block md:block">Market Cap</h3>
       </div>
       <div className="pt-3 bg-white lg:mx-36">
-    {filteredCoins.length === 0 ? (<p className="pt-2 pb-5 text-center">Sorry, no results found :(</p>) : filteredCoins.map(coin => {
+    {filteredCoins.length === 0 ? (<p className="pt-2 pb-5 text-center">Sorry, no results found</p>) : filteredCoins.map(coin => {
       return (
         <Coin 
         key={coin.id} 
