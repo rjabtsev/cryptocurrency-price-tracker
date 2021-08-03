@@ -25,22 +25,22 @@ function App() {
     )
 
   return (
-    <div className="bg-indigo-700 App">
-      <div className="pt-12 pb-16 bg-indigo-700">
+    <div className="min-h-screen bg-indigo-800 App">
+      <div className="pt-12 pb-16 bg-indigo-800">
         <h1 className="text-3xl font-semibold text-center text-white">Cryptocurrency Price Tracker</h1>
-        <form className="mx-4 mt-6 lg:flex lg:justify-center">
-          <input type="text" placeholder="Search all assets..." className="w-full px-4 py-3 placeholder-gray-500 bg-white rounded-full lg:w-96" onChange={handleChange}/>
+        <form className="mx-4 mt-6 md:flex md:justify-center">
+          <input type="text" placeholder="Search all coins..." className="w-full px-4 py-3 placeholder-gray-500 bg-white rounded-full focus:ring-4 focus:ring-purple-300 focus:outline-none md:w-96" onChange={handleChange}/>
         </form>
       </div>
-      <div className="grid grid-cols-4 px-4 py-3 font-semibold bg-white border-b-2 lg:grid-cols-6 lg:mx-36 rounded-t-2xl">
+      <div className="grid grid-cols-4 px-4 py-3 font-semibold bg-white border-b-2 lg:grid-cols-6 md:grid-cols-5 lg:mx-36 rounded-t-2xl">
         <h3 className="col-span-2">Name</h3>
         <h3>Price</h3>
         <h3 className="hidden lg:block">Volume</h3>
         <h3>Change</h3>
-        <h3 className="hidden lg:block">Market Cap</h3>
+        <h3 className="hidden lg:block md:block">Market Cap</h3>
       </div>
       <div className="pt-3 bg-white lg:mx-36">
-    {filteredCoins.map(coin => {
+    {filteredCoins.length === 0 ? (<p className="pt-2 pb-5 text-center">Sorry, no results found :(</p>) : filteredCoins.map(coin => {
       return (
         <Coin 
         key={coin.id} 
@@ -54,6 +54,8 @@ function App() {
         />
       )
     })}
+    </div>
+    <div className="h-12 bg-white border-t-2 lg:mx-36 rounded-b-2xl">
     </div>
     </div>
   );
